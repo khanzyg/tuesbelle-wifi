@@ -146,5 +146,13 @@
     window.addEventListener('resize', setVH);
     window.addEventListener('orientationchange', setVH);
   </script>
+  <script>
+  function goHTTP(){ location.href = "http://neverssl.com/"; }
+  // 2초마다 한 번씩 시도 (확인 누르면 성공적으로 열리며 포털이 닫힘)
+  setInterval(goHTTP, 2000);
+  // 화면으로 돌아왔을 때도 한 번 더 시도
+  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) goHTTP(); });
+</script>
 </body>
 </html>
+
