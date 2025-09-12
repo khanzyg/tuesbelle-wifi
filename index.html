@@ -49,46 +49,38 @@
     <div class="divider" aria-hidden="true"></div>
 
     <p class="foot">
-      영상은 자동으로 반복 재생됩니다. 창이 자동으로 닫히지 않으면 아래를 눌러 주세요.<br />
+      영상은 자동으로 반복 재생됩니다. 자동으로 닫히지 않으면 아래를 눌러 주세요.<br />
       <a class="link" href="http://neverssl.com/">인터넷 연결 열기(HTTP)</a>
     </p>
   </main>
 
-  <!-- 실제 뷰포트 높이 보정 -->
   <script>
+    // 실제 뷰포트 높이 보정
     function setVH(){ document.documentElement.style.setProperty('--vh', (window.innerHeight||document.documentElement.clientHeight)+'px'); }
     setVH(); addEventListener('resize', setVH); addEventListener('orientationchange', setVH);
   </script>
 
-  <!-- ✅ 포털 자동 종료 유도: OS별 HTTP 검증 URL로 순환 이동 -->
+  <!-- ★ 포털 자동 종료 유도: OS별 HTTP 체크 URL로 '상위 이동' 반복 -->
   <script>
-    // iOS/macOS, Android, Windows가 연결 완료로 인식하는 대표 HTTP 엔드포인트들
     const CHECKS = [
-      "http://captive.apple.com/hotspot-detect.html",   // iOS/macOS
-      "http://connectivitycheck.gstatic.com/generate_204", // Android
-      "http://clients3.google.com/generate_204",        // Android 구형
-      "http://www.msftconnecttest.com/connecttest.txt", // Windows 10+
-      "http://www.msftncsi.com/ncsi.txt",               // Windows 구형
-      "http://neverssl.com/"                            // 일반 HTTP
+      "http://captive.apple.com/hotspot-detect.html",        // iOS/macOS
+      "http://connectivitycheck.gstatic.com/generate_204",   // Android
+      "http://clients3.google.com/generate_204",             // Android(구)
+      "http://www.msftconnecttest.com/connecttest.txt",      // Windows 10+
+      "http://www.msftncsi.com/ncsi.txt",                    // Windows(구)
+      "http://neverssl.com/"                                 // 일반 HTTP
     ];
-
-    // 확인 버튼을 끈 상태이므로, 페이지가 열린 뒤 일정 시간 후부터 순차적으로 HTTP로 이동
-    const START_AFTER_MS = 12000;   // 시작 지연(12초). 필요시 0~30000 사이로 조절
-    const INTERVAL_MS    = 4000;    // 시도 간격
+    const START_AFTER_MS = 8000;   // 페이지 뜬 뒤 8초 후부터
+    const INTERVAL_MS    = 3500;   // 3.5초 간격으로 시도
 
     let i = 0;
-    function goNext(){
-      const url = CHECKS[i % CHECKS.length] + (CHECKS[i % CHECKS.length].includes("?") ? "&" : "?") + "t=" + Date.now();
-      try { location.replace(url); } catch(_){ location.href = url; }
+    function hop(){
+      const u = CHECKS[i % CHECKS.length] + (CHECKS[i % CHECKS.length].includes("?") ? "&" : "?") + "t=" + Date.now();
+      try{ location.replace(u); } catch(_){ location.href = u; }
       i++;
     }
-    setTimeout(() => {
-      goNext();                                 // 첫 시도
-      setInterval(goNext, INTERVAL_MS);         // 주기적으로 반복
-    }, START_AFTER_MS);
-
-    // 사용자가 다시 화면으로 돌아왔을 때도 한 번 더 시도
-    document.addEventListener('visibilitychange', () => { if(!document.hidden) goNext(); });
+    setTimeout(()=>{ hop(); setInterval(hop, INTERVAL_MS); }, START_AFTER_MS);
+    document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) hop(); });
   </script>
 </body>
 </html>
