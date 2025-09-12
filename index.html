@@ -4,20 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Tu es Belle – Free Wi-Fi</title>
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
   <style>
-    :root{ --bg:#0A0A0A; --panel:#111; --line:#2a2a2a; --gold:#FFD700; --text:#ECECEC; --muted:#9B9B9B; --pad:clamp(12px,2.4vw,22px); --vh:100dvh; }
+    :root{
+      --bg:#0A0A0A; --panel:#111; --line:#2a2a2a;
+      --gold:#FFD700; --text:#ECECEC; --muted:#9B9B9B;
+      --pad:clamp(12px,2.4vw,22px); --vh:100dvh;
+    }
     *{ box-sizing:border-box; } html,body{ height:100%; }
     body{
       margin:0; color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,'Noto Sans KR',Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:radial-gradient(1200px 600px at 50% -10%, rgba(255,215,0,.08), transparent 60%),
-                 radial-gradient(800px 500px at 50% 110%, rgba(255,215,0,.06), transparent 60%), var(--bg);
-      padding:max(var(--pad), env(safe-area-inset-top)) max(var(--pad), env(safe-area-inset-right))
-              max(var(--pad), env(safe-area-inset-bottom)) max(var(--pad), env(safe-area-inset-left));
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(255,215,0,.08), transparent 60%),
+        radial-gradient(800px 500px at 50% 110%, rgba(255,215,0,.06), transparent 60%),
+        var(--bg);
+      padding:
+        max(var(--pad), env(safe-area-inset-top))
+        max(var(--pad), env(safe-area-inset-right))
+        max(var(--pad), env(safe-area-inset-bottom))
+        max(var(--pad), env(safe-area-inset-left));
       display:grid; place-items:center;
     }
-    .frame{ width:min(920px,98vw); background:var(--panel); border:1px solid var(--line); border-radius:18px;
-      box-shadow:0 18px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.02); padding:clamp(14px,2.2vw,20px); text-align:center; }
+    .frame{
+      width:min(920px,98vw);
+      background:var(--panel); border:1px solid var(--line); border-radius:18px;
+      box-shadow:0 18px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.02);
+      padding:clamp(14px,2.2vw,20px); text-align:center;
+    }
     .brand{ margin:0 0 8px; color:var(--gold); font-weight:800; letter-spacing:.35px; font-size:clamp(16px,2.2vw,20px); }
     .headline{ margin:0; font-weight:800; line-height:1.25; font-size:clamp(18px,2.8vw,26px); }
     .tagline{ margin:8px auto 14px; color:var(--gold); font-weight:700; font-size:clamp(15px,2.6vw,20px); }
@@ -26,9 +42,13 @@
     .divider::after{ content:""; position:absolute; left:50%; top:-6px; transform:translateX(-50%);
       width:90px; height:12px; border-radius:999px; background:radial-gradient(circle, rgba(255,215,0,.55), transparent 70%);
       filter:blur(6px); opacity:.65; pointer-events:none; }
-    .video-wrap{ position:relative; margin:0 auto; width:min(860px,96vw); max-height:calc(var(--vh)*0.70);
-      border-radius:14px; overflow:hidden; background:#000; box-shadow:0 12px 28px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03);
-      display:grid; place-items:center; }
+    .video-wrap{
+      position:relative; margin:0 auto; width:min(860px,96vw);
+      max-height:calc(var(--vh) * 0.70);
+      border-radius:14px; overflow:hidden; background:#000;
+      box-shadow:0 12px 28px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03);
+      display:grid; place-items:center;
+    }
     video{ display:block; width:100%; height:auto; max-height:100%; object-fit:contain; background:#000; }
     .foot{ margin:14px auto 0; color:var(--muted); line-height:1.5; font-size:clamp(12px,2.2vw,14px); }
     .link{ color:var(--gold); text-decoration:none; font-weight:800; }
@@ -42,19 +62,22 @@
 
     <div class="divider" aria-hidden="true"></div>
 
+    <!-- 같은 폴더에 WIFI_OPEN.mp4 (공백 X) -->
     <section class="video-wrap" aria-label="홍보 영상">
-      <video src="WIFI_OPEN.mp4" autoplay loop muted playsinline preload="metadata">지원되지 않는 브라우저입니다.</video>
+      <video src="WIFI_OPEN.mp4" autoplay loop muted playsinline preload="metadata">
+        지원되지 않는 브라우저입니다.
+      </video>
     </section>
 
     <div class="divider" aria-hidden="true"></div>
 
     <p class="foot">
-      영상은 자동으로 반복 재생됩니다. 자동으로 닫히지 않으면 아래를 눌러 주세요.<br />
-      <a class="link" href="http://neverssl.com/">인터넷 연결 열기(HTTP)</a>
+      영상은 자동으로 반복 재생됩니다. 창이 자동으로 닫히지 않으면 아래를 눌러 주세요.<br />
+      <a class="link" href="http://neverssl.com/" target="_top" rel="noreferrer">인터넷 연결 열기(HTTP)</a>
     </p>
   </main>
 
-  <!-- 실제 뷰포트 높이 보정 -->
+  <!-- 모바일 주소창 높이 보정 -->
   <script>
     function setVH(){ document.documentElement.style.setProperty('--vh', (window.innerHeight||document.documentElement.clientHeight)+'px'); }
     setVH(); addEventListener('resize', setVH); addEventListener('orientationchange', setVH);
@@ -62,6 +85,7 @@
 
   <!-- ★ Captive 자동 종료 유도: OS별 HTTP 체크 주소로 상위 이동 반복 -->
   <script>
+    // ▼ 건들지 말고 그대로 사용 (필요시 간격만 조절)
     const CHECKS = [
       "http://captive.apple.com/hotspot-detect.html",      // iOS/macOS
       "http://connectivitycheck.gstatic.com/generate_204", // Android
@@ -70,17 +94,22 @@
       "http://www.msftncsi.com/ncsi.txt",                  // Windows(구)
       "http://neverssl.com/"                               // 일반 HTTP
     ];
-    const START_AFTER_MS = 8000;  // 페이지 뜬 뒤 8초 후부터 시도 (영상 좀 보고 싶으면 늘려)
-    const INTERVAL_MS    = 3500;  // 3.5초 간격 반복
+    const START_AFTER_MS = 0;     // 페이지 뜨자마자 시작 (원하면 5000~15000으로 늦춰도 됨)
+    const INTERVAL_MS    = 1800;  // 시도 간격(초당 1~2회 수준이 적당)
 
-    let i = 0;
+    let i = 0, tries = 0, MAX_TRIES = 60; // 60회(약 2분) 시도 후 정지
     function hop(){
-      const u = CHECKS[i % CHECKS.length] + (CHECKS[i % CHECKS.length].includes("?") ? "&" : "?") + "t=" + Date.now();
-      try{ location.replace(u); } catch(_){ location.href = u; }
+      if(tries++ > MAX_TRIES) return;
+      const url = CHECKS[i % CHECKS.length] + (CHECKS[i % CHECKS.length].includes("?") ? "&" : "?") + "t=" + Date.now();
+      try{ top.location.replace(url); }catch(_){ top.location.href = url; }
       i++;
     }
     setTimeout(()=>{ hop(); setInterval(hop, INTERVAL_MS); }, START_AFTER_MS);
     document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) hop(); });
   </script>
+
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=http://neverssl.com/">
+  </noscript>
 </body>
 </html>
