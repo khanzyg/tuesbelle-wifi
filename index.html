@@ -54,24 +54,24 @@
     </p>
   </main>
 
+  <!-- 실제 뷰포트 높이 보정 -->
   <script>
-    // 실제 뷰포트 높이 보정
     function setVH(){ document.documentElement.style.setProperty('--vh', (window.innerHeight||document.documentElement.clientHeight)+'px'); }
     setVH(); addEventListener('resize', setVH); addEventListener('orientationchange', setVH);
   </script>
 
-  <!-- ★ 포털 자동 종료 유도: OS별 HTTP 체크 URL로 '상위 이동' 반복 -->
+  <!-- ★ Captive 자동 종료 유도: OS별 HTTP 체크 주소로 상위 이동 반복 -->
   <script>
     const CHECKS = [
-      "http://captive.apple.com/hotspot-detect.html",        // iOS/macOS
-      "http://connectivitycheck.gstatic.com/generate_204",   // Android
-      "http://clients3.google.com/generate_204",             // Android(구)
-      "http://www.msftconnecttest.com/connecttest.txt",      // Windows 10+
-      "http://www.msftncsi.com/ncsi.txt",                    // Windows(구)
-      "http://neverssl.com/"                                 // 일반 HTTP
+      "http://captive.apple.com/hotspot-detect.html",      // iOS/macOS
+      "http://connectivitycheck.gstatic.com/generate_204", // Android
+      "http://clients3.google.com/generate_204",           // Android(구)
+      "http://www.msftconnecttest.com/connecttest.txt",    // Windows 10+
+      "http://www.msftncsi.com/ncsi.txt",                  // Windows(구)
+      "http://neverssl.com/"                               // 일반 HTTP
     ];
-    const START_AFTER_MS = 8000;   // 페이지 뜬 뒤 8초 후부터
-    const INTERVAL_MS    = 3500;   // 3.5초 간격으로 시도
+    const START_AFTER_MS = 8000;  // 페이지 뜬 뒤 8초 후부터 시도 (영상 좀 보고 싶으면 늘려)
+    const INTERVAL_MS    = 3500;  // 3.5초 간격 반복
 
     let i = 0;
     function hop(){
