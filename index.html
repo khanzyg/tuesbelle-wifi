@@ -1,107 +1,43 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Tu es Belle – Free Wi-Fi</title>
-
-  <!-- JS가 막혀도 9초 뒤 HTTP로 이동(캡티브 종료 유도) -->
-  <meta http-equiv="refresh" content="9; url=http://neverssl.com/">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Tu es Belle – Wi-Fi 연결</title>
   <style>
-    :root{ --bg:#0A0A0A; --panel:#111; --line:#2a2a2a; --gold:#FFD700; --text:#ECECEC; --muted:#9B9B9B; --pad:clamp(12px,2.4vw,22px); --vh:100dvh; }
-    *{ box-sizing:border-box; } html,body{ height:100%; }
+    html,body{height:100%;margin:0}
     body{
-      margin:0; color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,'Noto Sans KR',Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:radial-gradient(1200px 600px at 50% -10%, rgba(255,215,0,.08), transparent 60%),
-                 radial-gradient(800px 500px at 50% 110%, rgba(255,215,0,.06), transparent 60%), var(--bg);
-      padding:max(var(--pad), env(safe-area-inset-top)) max(var(--pad), env(safe-area-inset-right))
-              max(var(--pad), env(safe-area-inset-bottom)) max(var(--pad), env(safe-area-inset-left));
-      display:grid; place-items:center;
+      background:#0b0b0b;color:#eee;display:grid;place-items:center;padding:16px
     }
-    .frame{ width:min(920px,98vw); background:var(--panel); border:1px solid var(--line); border-radius:18px;
-      box-shadow:0 18px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.02); padding:clamp(14px,2.2vw,20px); text-align:center; }
-    .brand{ margin:0 0 8px; color:var(--gold); font-weight:800; letter-spacing:.35px; font-size:clamp(16px,2.2vw,20px); }
-    .headline{ margin:0; font-weight:800; line-height:1.25; font-size:clamp(18px,2.8vw,26px); }
-    .tagline{ margin:8px auto 14px; color:var(--gold); font-weight:700; font-size:clamp(15px,2.6vw,20px); }
-    .divider{ height:1px; border:0; margin:14px auto; width:min(88%,720px);
-      background:linear-gradient(90deg,transparent,rgba(255,215,0,.55),transparent); position:relative; }
-    .divider::after{ content:""; position:absolute; left:50%; top:-6px; transform:translateX(-50%);
-      width:90px; height:12px; border-radius:999px; background:radial-gradient(circle, rgba(255,215,0,.55), transparent 70%);
-      filter:blur(6px); opacity:.65; pointer-events:none; }
-    .video-wrap{ position:relative; margin:0 auto; width:min(860px,96vw); max-height:calc(var(--vh)*0.70);
-      border-radius:14px; overflow:hidden; background:#000; box-shadow:0 12px 28px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03);
-      display:grid; place-items:center; }
-    video{ display:block; width:100%; height:auto; max-height:100%; object-fit:contain; background:#000; }
-    .foot{ margin:14px auto 0; color:var(--muted); line-height:1.5; font-size:clamp(12px,2.2vw,14px); }
-    .link{ color:var(--gold); text-decoration:none; font-weight:800; }
+    .card{width:min(560px,96vw);text-align:center;background:#111;border:1px solid #222;border-radius:14px;padding:18px 16px}
+    .brand{color:#ffd700;font-weight:800;margin:0 0 6px}
+    .headline{margin:0 0 6px;font-weight:800;font-size:20px}
+    .tagline{margin:0 0 12px;color:#ffd700}
+    .cta{
+      display:inline-block;margin-top:8px;padding:14px 18px;border-radius:12px;
+      background:linear-gradient(180deg,#ffd700,#e6c100);color:#111;font-weight:900;text-decoration:none
+    }
+    .alt{margin-top:10px;font-size:13px;color:#aaa}
+    .alt a{color:#ffd700;text-decoration:none;font-weight:700}
   </style>
 </head>
 <body>
-  <main class="frame" role="main" aria-label="Tu es Belle Free Wi-Fi">
+  <main class="card" role="main" aria-label="Tu es Belle Wi-Fi">
     <p class="brand">Tu es Belle – Premium Hair Salon</p>
-    <h1 class="headline">감사합니다, 오늘도 Tu es Belle</h1>
-    <p class="tagline">“하늘과 바다보다, 더 아름다운 당신에게”</p>
+    <h1 class="headline">Wi-Fi 연결을 완료해 주세요</h1>
+    <p class="tagline">“너는 하늘보다 그리고 바다보다 아름다워”</p>
 
-    <div class="divider" aria-hidden="true"></div>
+    <!-- ✅ 상위창을 HTTP로 열어 캡티브를 확실히 종료 -->
+    <a class="cta" href="http://neverssl.com/" target="_top" rel="noreferrer">인터넷 연결하기</a>
 
-    <section class="video-wrap" aria-label="홍보 영상">
-      <video src="WIFI_OPEN.mp4" autoplay loop muted playsinline preload="metadata">지원되지 않는 브라우저입니다.</video>
-    </section>
-
-    <div class="divider" aria-hidden="true"></div>
-
-    <p class="foot">
-      영상은 자동 반복 재생됩니다. 자동으로 닫히지 않으면 아래를 눌러 주세요.<br />
-      <a class="link" href="http://neverssl.com/" target="_top" rel="noreferrer">인터넷 연결 열기(HTTP)</a>
-    </p>
+    <!-- OS별 백업 링크(페이지가 아주 보수적인 기기용) -->
+    <div class="alt">
+      안 열리면 →
+      <a href="http://captive.apple.com/hotspot-detect.html" target="_top" rel="noreferrer">iPhone</a> /
+      <a href="http://connectivitycheck.gstatic.com/generate_204" target="_top" rel="noreferrer">Android</a> /
+      <a href="http://www.msftconnecttest.com/connecttest.txt" target="_top" rel="noreferrer">Windows</a>
+    </div>
   </main>
-
-  <!-- 실제 뷰포트 높이 보정 -->
-  <script>
-    function setVH(){ document.documentElement.style.setProperty('--vh', (window.innerHeight||document.documentElement.clientHeight)+'px'); }
-    setVH(); addEventListener('resize', setVH); addEventListener('orientationchange', setVH);
-  </script>
-
-  <!-- ★ 캡티브 종료 루틴: OS별 전용 HTTP 체크로 '상위 창' 이동 (혼합컨텐츠 에러 회피) -->
-  <script>
-    (function(){
-      const ua = navigator.userAgent || "";
-      // OS별 1순위 체크 URL
-      let primary = "http://neverssl.com/";
-      if (/Android/i.test(ua)) {
-        primary = "http://connectivitycheck.gstatic.com/generate_204";  // Android 표준
-      } else if (/iPhone|iPad|Macintosh/i.test(ua)) {
-        primary = "http://captive.apple.com/hotspot-detect.html";        // iOS/macOS
-      } else if (/Windows/i.test(ua)) {
-        primary = "http://www.msftconnecttest.com/connecttest.txt";      // Windows 10+
-      }
-
-      const fallbacks = [
-        "http://clients3.google.com/generate_204",
-        "http://www.msftncsi.com/ncsi.txt",
-        "http://neverssl.com/"
-      ];
-
-      // 네비게이션(상위창) 함수 — replace 우선, 실패 시 href
-      const nav = (u)=>{
-        const url = u + (u.includes("?")?"&":"?") + "t=" + Date.now();
-        try{ top.location.replace(url); }catch(e){ top.location.href = url; }
-      };
-
-      // 타임라인: 6초 후 1순위 → 9초 메타리프레시 백업 → 이후 3초 간격으로 백업들 순환
-      setTimeout(()=>nav(primary), 6000);
-      let i = 0;
-      setTimeout(()=>{ setInterval(()=>nav(fallbacks[i++ % fallbacks.length]), 3000); }, 10000);
-
-      // 사용자가 창으로 돌아오면 한 번 더 시도
-      document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) nav(primary); });
-    })();
-  </script>
-
-  <noscript>
-    <meta http-equiv="refresh" content="0;url=http://neverssl.com/">
-  </noscript>
 </body>
 </html>
