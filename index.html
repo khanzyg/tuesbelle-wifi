@@ -14,8 +14,10 @@
     .brand{color:#ffd700;font-weight:800;margin:0 0 6px}
     .headline{margin:0 0 6px;font-weight:800;font-size:20px}
     .tagline{margin:0 0 12px;color:#ffd700}
+    .imgwrap{border-radius:12px;overflow:hidden;background:#000;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+    img{display:block;width:100%;height:auto}
     .cta{
-      display:inline-block;margin-top:8px;padding:14px 18px;border-radius:12px;
+      display:inline-block;margin-top:12px;padding:14px 18px;border-radius:12px;
       background:linear-gradient(180deg,#ffd700,#e6c100);color:#111;font-weight:900;text-decoration:none
     }
     .alt{margin-top:10px;font-size:13px;color:#aaa}
@@ -26,12 +28,17 @@
   <main class="card" role="main" aria-label="Tu es Belle Wi-Fi">
     <p class="brand">Tu es Belle – Premium Hair Salon</p>
     <h1 class="headline">Wi-Fi 연결을 완료해 주세요</h1>
-    <p class="tagline">“너는 하늘보다 그리고 바다보다 아름다워”</p>
+    <p class="tagline">“하늘과 바다보다, 더 아름다운 당신에게”</p>
+
+    <!-- 같은 폴더에 poster.jpg (300~600KB 권장) -->
+    <div class="imgwrap" aria-label="안내 이미지">
+      <img src="poster.jpg" alt="Tu es Belle Wi-Fi 안내 이미지" />
+    </div>
 
     <!-- ✅ 상위창을 HTTP로 열어 캡티브를 확실히 종료 -->
     <a class="cta" href="http://neverssl.com/" target="_top" rel="noreferrer">인터넷 연결하기</a>
 
-    <!-- OS별 백업 링크(페이지가 아주 보수적인 기기용) -->
+    <!-- OS별 백업 링크(아주 보수적인 기기용) -->
     <div class="alt">
       안 열리면 →
       <a href="http://captive.apple.com/hotspot-detect.html" target="_top" rel="noreferrer">iPhone</a> /
